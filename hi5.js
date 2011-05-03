@@ -1,5 +1,6 @@
 // add an extenion to "on"
 hi5 = {};
+
 hi5.on = function(event, handler, opts) {
     switch(event) {
         case 'location':
@@ -17,3 +18,16 @@ hi5.on = function(event, handler, opts) {
             break;
     }
 };
+
+hi5.location = function() {
+	var args = [].slice.call(arguments)
+	,   opts = typeof args[0] === 'function' ? {} : args[0]
+	,   hdlr = typeof args[0] === 'function' ? args[0] : args[1]
+	navigator.geolocation.getCurrentPosition(
+		function(position) {
+			hdlr.call(window, {status:'success', position:position})
+		}, function(e) {
+			hdlr.call(window, {status:'error', status:e.status, message:e.message})
+		}, opts);
+}
+

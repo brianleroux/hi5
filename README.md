@@ -1,9 +1,41 @@
-hi5
+	  ___ ___ .__ .________
+	 /   |   \|__||   ____/
+	/    ~    \  ||____  \ 
+	\    Y    /  |/       \
+	 \___|_  /|__/______  /
+		   \/           \/ 
 ===
 
-hi5 is an attempt at a sane API for draft W3C device APIs like geolocation, file system and contacts.
+A sane API for draft W3C device APIs. A higher level HTML5!
 
-TODO
+Design by committee sometimes results in suboptimal creations. The hi5
+library wraps browser device APIs to be terse and consistent with the
+social conventions common in JavaScript libraries.  
+
+Examples
 ---
 
-Add some more APIs and tests :)
+Cleaner Geolocation
+
+	// subscribe to navigator.geolocation.watchPosition
+	hi5.on('location', function(e) {
+		alert(e);
+	})
+
+	// subscribe once...
+	hi5.location(function(e) {
+	
+	})
+
+	// subscribe once w/ options
+	hi5.location({enableHighAccuracy:true}, function(e) {
+	
+	})
+
+Roadmap
+---
+
+- devicemotion
+- deviceorientation
+- audio
+- file
